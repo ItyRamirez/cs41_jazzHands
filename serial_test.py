@@ -1,13 +1,13 @@
 import serial
 
-ser = serial.Serial('/dev/ttyS3',9600)
+ser = serial.Serial('COM3',9600) #/dev/ttyS3
 print("Program started")
-nums = []
-for i in range(100):
-    num_str = ser.readline()
-    nums.append(num_str.decode().strip('\n'))
+while(True):
+    nums_str = ser.readline()
+    nums_str_stripped = nums_str.decode().strip('\n')
+    print(nums_str_stripped)
+    #nums.append(num_str.decode().strip('\n'))
 
-print(nums)
 
 
 
