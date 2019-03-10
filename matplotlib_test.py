@@ -7,7 +7,7 @@ duration = 0.5   # in seconds, may be float
 f = 440.0        # sine frequency, Hz, may be float
 
 y = (np.sin(2*np.pi*np.arange(fs*duration)*f/fs)).astype(np.float32)
-x = np.linspace(0,duration,fs*duration) #plot one period to start
+x = np.linspace(0,duration,fs*duration)
 
 plt.ion()
 
