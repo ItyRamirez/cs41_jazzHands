@@ -36,7 +36,6 @@ ax = fig.add_subplot(2,1,1)
 line1, = ax.plot(x, y, 'r-')
 ax.set_xlim(0,(1.0/BASE_FREQUENCY))
 
-
 #fig2 = plt.figure()
 ax2 = fig.add_subplot(2,1,2)
 frequency_bins = ["A","C#","E"]
@@ -47,11 +46,7 @@ plt.xticks(y_pos,frequency_bins)
 plt.ylabel("Amplitude")
 plt.title("Frequency Components")
 
-
-
 #ax2 = plt.bar()
-
-
 
 #TODO check if these can go together
 ax.set_ylim(ymax = 2.5)
@@ -66,7 +61,6 @@ while(True):
     #Parses the values into a list of numbers
     nums_str_list = nums_str.decode().strip('\n').split(" ")
    
-    
     #The first input sets the fundamental frequency.
     #The second input sets the weight of the even harmonics.
     #The third input sets the weight of the odd harmonics.
@@ -89,9 +83,9 @@ while(True):
     #   frequency_weights.append()
 
     f = [0, 0, 0]
-    f[0] = 440 #* frequency_weights[0] #600 * int(nums_str_list[1])/318
-    f[1] = 554.37 #2 * BASE_FREQUENCY #* frequency_weights[1]#440 * int(nums_str_list[2])/600
-    f[2] = 659.25#3 * BASE_FREQUENCY #* frequency_weights[2]
+    f[0] = BASE_FREQUENCY #* frequency_weights[0] #600 * int(nums_str_list[1])/318
+    f[1] = (81.0/64.0) * BASE_FREQUENCY #Major third #554.37 #2 * BASE_FREQUENCY #* frequency_weights[1]#440 * int(nums_str_list[2])/600
+    f[2] = (3.0/2.0) * BASE_FREQUENCY #659.25#3 * BASE_FREQUENCY #* frequency_weights[2]
 
     # generate samples 
     samples = 0
@@ -104,8 +98,9 @@ while(True):
     for i in range(3):
         ax2.patches[i].set_height(frequency_weights[i])
     #ax2.set_ylim(ymax = 2)
-
     #plt.subplot(2,1,1)
+
+    #Rescale the x axis to appropriately fit the visualization
     xmin,xmax = ax.get_xlim() #plt.xlim()
     smallest_frequency = min(f)
     print(smallest_frequency)
@@ -113,17 +108,10 @@ while(True):
     print(longest_period)
     ax.set_xlim(xmax = (100* longest_period))
 
-    
-    
-
     line1.set_ydata(samples)
-
-
 
     fig.canvas.draw()
     fig.canvas.flush_events()
-
-    
 
 stream.stop_stream()
 stream.close()
