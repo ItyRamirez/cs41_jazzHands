@@ -17,7 +17,7 @@ line1, = ax.plot(x, y, 'r-')
 
 ax.set_xlim(0,(1.0/f))
 for i in range(200):
-    xmin,xmax = plt.xlim()
+    
     f = 440*((i+1)/100)
     T = 1.0/f
 

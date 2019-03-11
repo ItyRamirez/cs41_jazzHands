@@ -1,6 +1,7 @@
-const int FLEX_PIN_1 = A0; //Pin connected to the voltage divider output of the first flex sensor
-const int FLEX_PIN_2 = A3; //Pin connected to the voltage divider output of the second flex sensor
-const int POT_PIN_1 = A2;
+
+const int FLEX_PIN_1 = A0; //Pin connected to the voltage divider output of 50k pot
+const int FLEX_PIN_2 = A3; //Pin connected to the voltage divider output of the second 50k pot
+const int FLEX_PIN_3 = A2; //Pin connected to the voltage divider output of the 20k pot
 
 //Measure the voltage at 5V and the actual resistance of the 65k equivalent resistor, and
 //enter them below. This makes the angle calculation much more accurate.
@@ -14,14 +15,21 @@ const float R_DIV = 65000.0; //ACtual resistance of the 130k||130k resistor
 //const float STRAIGHT_RESISTANCE_1 = 32773.25; //resistance when straight
 //const float BEND_RESISTANCE_1 = 73559.91; //resistance when bent 90 degrees
 
-const float STRAIGHT_RESISTANCE_1 = 20000; //resistance when straight
-const float BEND_RESISTANCE_1 = 0; //resistance when bent 90 degrees
+//const float STRAIGHT_RESISTANCE_1 = 50000; //resistance when straight
+//const float BEND_RESISTANCE_1 = 0; //resistance when bent 90 degrees
 
-const float STRAIGHT_RESISTANCE_2 = 23753; //resistance of second flex sensor when straight
-const float BEND_RESISTANCE_2 = 55000; //resistance of second flex sensor when finger at 90 degrees = 50% range of motion
+//const float STRAIGHT_RESISTANCE_2 = 50000//23753; //resistance of second flex sensor when straight
+//const float BEND_RESISTANCE_2 = 0//55000; //resistance of second flex sensor when finger at 90 degrees = 50% range of motion
 
-const float POT_RESISTANCE_LO = 0;
-const float POT_RESISTANCE_HI = 20000;
+//const float STRAIGHT_RESISTANCE_3 = 0;
+//const float BEND_RESISTANCE_3 = 20000;
+
+const float POT1_LO = 0;
+const float POT1_HI = 50000;
+const float POT2_LO = 0;
+const float POT2_HI = 50000;
+const float POT3_LO = 0;
+const float POT3_HI = 20000;
 
 void setup() {
   //set the data rate for the SoftwareSerial port
@@ -33,7 +41,7 @@ void loop() {
    //Read the ADC
    int flexADC_1 = analogRead(FLEX_PIN_1);
    int flexADC_2 = analogRead(FLEX_PIN_2);
-   int flexADC_3 = analogRead(POT_PIN_1);
+   int flexADC_3 = analogRead(FLEX_PIN_3);
 
    //Calculate the voltage that the ADC read
    float flexV_1 = flexADC_1 * VCC/1023.0;
@@ -47,13 +55,13 @@ void loop() {
 
    //Use the calculated resistance to estimate the range of motion that the sensor
    //is currently exhibiting.
-   float percentage1 = map(flexR_1, STRAIGHT_RESISTANCE_1, BEND_RESISTANCE_1, 0, 100);
-   float percentage2 = map(flexR_2, STRAIGHT_RESISTANCE_2, BEND_RESISTANCE_2, 0, 100);  
-   float percentage3 = map(flexR_3, POT_RESISTANCE_LO, POT_RESISTANCE_HI, 0, 100);  
+   float percentage1 = map(flexR_1, POT1_LO, POT1_HI, 0, 100);
+   float percentage2 = map(flexR_2, POT2_LO, POT2_HI, 0, 100);  
+   float percentage3 = map(flexR_3, POT3_LO, POT3_HI, 0, 100);  
 
-    int percentage1Int = percentage1 / 1; 
-    int percentage2Int = percentage2 / 1; 
-    int percentage3Int = percentage3 / 1;
+   int percentage1Int = percentage1 / 1; 
+   int percentage2Int = percentage2 / 1; 
+   int percentage3Int = percentage3 / 1;
     
     Serial.print(percentage1Int); //Range of motion of index finger
     Serial.print(" ");
@@ -83,5 +91,5 @@ void loop() {
     //Serial.println(";");
     //Serial.println();
 
-   delay(250); //Read the sensor at 4Hz (4 times per second)
+   delay(1000); //Read the sensor at 4Hz (4 times per second)
 }
