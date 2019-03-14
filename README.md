@@ -3,7 +3,14 @@ CS41 Final Project
 *Team: Meera Radhakrishnan, Andrea Ramirez*
 
 ## Introduction
-Welcome to Jazz Hands! This project aimed to create sounds and visuals from data gathered from a glove with flex sensors. By using serial communcation, we transmitted values from the flex sensors (and some potentiometers) to our computer. The weights of different frequencies were adjusted depending on the sensors. These weights determined the audio output from our code, which played an A major chord and displayed the output audio waveform as well as the weights of the notes creating the chords. 
+Welcome to Jazz Hands! 
+
+This project uses a glove equipped with flex sensors on each finger to control sounds and visuals. The glove uses an Adafruit Metro Mini microcontroller to transmit flex measurements for each finger to the computer via serial communication. Python is used to read the measurements, do appropriate processing, and then generate the final sounds and visualizations. Each finger controls the weight of a different frequency component to add to the final sound, and visuals display the weights of each of the frequencies and the sound waveform in the time domain in real time. Our code plays an A major chord, and each of three flex sensors control the weights of A, C#, and E in the output sound.
+
+##Technical Overview
+
+Our code makes use of four key Python modules: PySerial (to process serial input from the glove), PyAudio (to generate sound), Numpy (for data processing of sound samples) and Matplotlib (to generate visuals).
+
 
 ## Setup
 #### Software
@@ -25,7 +32,7 @@ You may also need Xming or a similar program to be able to see the frequency plo
 Our code's serial communication was tested with an Adafruit Metro Mini at 9600 baud rate. The Metro Mini sent data from 3 sensors (or potentiometers) to our computer through serial. The flex sensors used had a 50k resistance, so its preferrable to use 50k potentiometers if not enough flex sensors are available. 
 
 ## Running the Code
-To run the code, first make sure your Metro Mini is outputing serial data at 9600 baud rate. The data from the 3 sensors should be all transmitted in the same line/buffer, separtaed by spaces. Check which serial port your Metro Mini is connected to (COM ports for Windows  or /dev/tty port for Mac and Linux). Update the serial port definition depending on the port you are using. An example definition is shown below: 
+To run the code, first make sure your Metro Mini is outputing serial data at a 9600 baud rate. The data from the 3 sensors should be all transmitted in the same line/buffer, separtaed by spaces. Check which serial port your Metro Mini is connected to (COM ports for Windows  or /dev/tty port for Mac and Linux). Update the serial port definition depending on the port you are using. An example definition is shown below: 
 
     #Serial port definition. Change this line according to the port you are using for serial communication.
     #COM3 is the serial communication port in this example
