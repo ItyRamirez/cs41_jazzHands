@@ -83,7 +83,7 @@ There are many possible extensions to build upon this project. Here are some ide
 
 -> More sensors and/or potentiometers can be added to have more variables available. The Metro Mini has 6 analog inputs, so up to 6 sensors could be read. Using a different microcontroller with more analog inputs would allow for even more sensor inputs. Each of these sensors could be used to add another frequency to the chord, or even be set to vary volume, pitch, or other aspects of the audio.
 
--> Our code currently generates an A major chord using a 440 Hz base frequnecy. Editing this frequnecy would allow other chords to be produced, so feel free to experiment with it!
+-> Our code currently generates an A major chord using a 440 Hz base frequency. Editing this frequency would allow other chords to be produced, so feel free to experiment with it!
 
 -> The current audio stream plays sound for the set duration and then stops the stream. However, the PyAudio library allows for sound to be played continuosly while varying the stream in real time. This can be done by creating a callback function for the PyAudio object. This function gets called at the end of the set duration, and new audio data can be attached to the stream to continue playing sounds without stopping the stream, generating a continuous audio output. 
 
