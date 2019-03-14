@@ -11,7 +11,7 @@ const float POT1_HI = 50000;
 const float POT2_LO = 0;
 const float POT2_HI = 50000;
 const float POT3_LO = 0;
-const float POT3_HI = 20000;
+const float POT3_HI = 50000;
 
 void setup() {
   Serial.begin(9600);
