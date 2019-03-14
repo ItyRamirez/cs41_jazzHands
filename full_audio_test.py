@@ -124,11 +124,10 @@ def generate_sound_samples(chord_frequencies, frequency_weights):
     return samples
 
 
-def update_plots(plt, ax, ax2, frequency_weights, chord_frequencies, samples):
+def update_plots(ax, ax2, frequency_weights, chord_frequencies, samples):
     """
     Updates plot data with the latest measurements.
 
-    plt: pyplot object
     ax: Axes object for time domain plot
     ax2: Axes object for frequency domain plot
     frequency_weights: Weights to plot in frequency domain plot
@@ -169,7 +168,7 @@ while(True):
     stream.write(volume * samples)
 
     # Update plot data
-    update_plots(plt, ax, ax2, frequency_weights, chord_frequencies, samples)
+    update_plots(ax, ax2, frequency_weights, chord_frequencies, samples)
 
     # Update plot visualizations
     fig.canvas.draw()
