@@ -7,7 +7,7 @@ Welcome to Jazz Hands!
 
 This project uses a glove equipped with flex sensors on each finger to control sounds and visuals. The glove uses an Adafruit Metro Mini microcontroller to transmit flex measurements for each finger to the computer via serial communication. Python is used to read the measurements, do appropriate processing, and then generate the final sounds and visualizations. Each finger controls the weight of a different frequency component to add to the final sound, and visuals display the weights of each of the frequencies and the sound waveform in the time domain in real time. Our code plays an A major chord, and each of three flex sensors control the weights of A, C#, and E in the output sound.
 
-##Technical Overview
+## Technical Overview
 
 Our code makes use of four key Python modules: PySerial (to process serial input from the glove), PyAudio (to generate sound), Numpy (for data processing of sound samples) and Matplotlib (to generate visuals).
 
