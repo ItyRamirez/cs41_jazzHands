@@ -59,6 +59,8 @@ Our code's serial communication was tested with an Adafruit Metro Mini at 9600 b
 TODO probably more instructions on how to build the circuit
 
 ## Running the Code
+- Upload Arduino code
+
 To run the code, first make sure your Metro Mini is outputing serial data at a 9600 baud rate. The data from the 3 sensors should be all transmitted in the same line/buffer, separtaed by spaces. Check which serial port your Metro Mini is connected to (COM ports for Windows  or /dev/tty port for Mac and Linux). Update the serial port definition depending on the port you are using. An example definition is shown below: 
 
     #Serial port definition. Change this line according to the port you are using for serial communication.
