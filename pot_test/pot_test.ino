@@ -3,26 +3,8 @@ const int FLEX_PIN_1 = A0; //Pin connected to the voltage divider output of 50k 
 const int FLEX_PIN_2 = A3; //Pin connected to the voltage divider output of the second 50k pot
 const int FLEX_PIN_3 = A2; //Pin connected to the voltage divider output of the 20k pot
 
-//Measure the voltage at 5V and the actual resistance of the 65k equivalent resistor, and
-//enter them below. This makes the angle calculation much more accurate.
-
 const float VCC = 4.84; //Measured voltage of Arduino 5V line
-const float R_DIV = 65000.0; //ACtual resistance of the 130k||130k resistor
-
-//Upload the code and try to determine an average value of resistance when the 
-//sensor is not bent, and when it it bent at 90 degrees. Enter those and reload
-//the code for a more accurate angle estimate.
-//const float STRAIGHT_RESISTANCE_1 = 32773.25; //resistance when straight
-//const float BEND_RESISTANCE_1 = 73559.91; //resistance when bent 90 degrees
-
-//const float STRAIGHT_RESISTANCE_1 = 50000; //resistance when straight
-//const float BEND_RESISTANCE_1 = 0; //resistance when bent 90 degrees
-
-//const float STRAIGHT_RESISTANCE_2 = 50000//23753; //resistance of second flex sensor when straight
-//const float BEND_RESISTANCE_2 = 0//55000; //resistance of second flex sensor when finger at 90 degrees = 50% range of motion
-
-//const float STRAIGHT_RESISTANCE_3 = 0;
-//const float BEND_RESISTANCE_3 = 20000;
+const float R_DIV = 65000.0; //Actual resistance of the 130k||130k resistor
 
 const float POT1_LO = 0;
 const float POT1_HI = 50000;
@@ -32,9 +14,7 @@ const float POT3_LO = 0;
 const float POT3_HI = 20000;
 
 void setup() {
-  //set the data rate for the SoftwareSerial port
-  //BT.begin(9600);
- Serial.begin(9600);
+  Serial.begin(9600);
 }
 
 void loop() {
@@ -70,26 +50,5 @@ void loop() {
     Serial.print(percentage3Int);
     Serial.print("\n"); 
 
-    //BT.print(percentage1Int);
-    //BT.print(" "); 
-
-    //if (percentage1Int < 10) {     
-      //BT.print("0");
-      //Serial.print("0");
-    //}
-   
-    //if (percentage2Int < 10) {     
-      //BT.print("0");
-      //Serial.print("0");
-    //}
-
-    //BT.print(percentage2Int); //Range of motion of middle finger
-    //BT.println(";");
-    //BT.println();
-
-//    Serial.print(percentage2Int); //Range of motion of middle finger
-    //Serial.println(";");
-    //Serial.println();
-
-   delay(1000); //Read the sensor at 4Hz (4 times per second)
+   delay(1000); //Read the sensor at 1Hz (1 time per second)
 }
