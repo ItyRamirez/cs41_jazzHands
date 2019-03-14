@@ -15,7 +15,9 @@ Our code makes use of four key Python modules: PySerial (to process serial input
 To better understand the flow of our Python code, it is helpful to understand how our glove hardware works.
 
 #### Hardware Overview
-Flex sensors (such as the ones here: https://www.adafruit.com/product/1070) are simply variable resistors, or potentiometers, with a maximum value of approximately 50kOhm. As the finger is flexed, the resistance of the flex sensor decreases. Since the Metro Mini can only read voltage signals, we use a simple application of Ohm's Law (voltage = current * resistance) to convert the resistance measurements to voltage signals that the Metro Mini can read. We include a picture of the circuit schematic HERE. TODO The Metro Mini then collects resistance measurements from all of the fingers 4 times per second. These resistance measurements are normalized and then transmitted continuously to the computer via serial.
+Flex sensors (such as the ones here: https://www.adafruit.com/product/1070) are simply variable resistors, or potentiometers, with a maximum value of approximately 50kOhm. As the finger is flexed, the resistance of the flex sensor decreases. Since the Metro Mini can only read voltage signals, we use a simple application of Ohm's Law (voltage = current * resistance) to convert the resistance measurements to voltage signals that the Metro Mini can read. We include a picture of the circuit schematic below. The Metro Mini then collects resistance measurements from all of the fingers 4 times per second. These resistance measurements are normalized and then transmitted continuously to the computer via serial.
+
+![alt text](https://github.com/ItyRamirez/cs41_jazzHands/blob/master/Schematic.JPG)
 
 #### Software Overview
 At a high level, our code sets up our serial link, audio, and visualizations and then runs continuously in a while(True) loop. Within this loop, it continuously reads in flex sensor measurements from the Metro Mini, normalizes them to an expected maximum value, uses them to weight each of the frequency components, generates weighted sine waves for each of the frequencies, and writes them to the audio stream. The time domain and frequency domain plots are then updated using the latest measurements. 
@@ -83,7 +85,7 @@ There are many possible extensions to build upon this project. Here are some ide
 
 -> More sensors and/or potentiometers can be added to have more variables available. The Metro Mini has 6 analog inputs, so up to 6 sensors could be read. Using a different microcontroller with more analog inputs would allow for even more sensor inputs. Each of these sensors could be used to add another frequency to the chord, or even be set to vary volume, pitch, or other aspects of the audio.
 
--> Our code currently generates an A major chord using a 440 Hz base frequnecy. Editing this frequnecy would allow other chords to be produced, so feel free to experiment with it!
+-> Our code currently generates an A major chord using a 440 Hz base frequency. Editing this frequency would allow other chords to be produced, so feel free to experiment with it!
 
 -> The current audio stream plays sound for the set duration and then stops the stream. However, the PyAudio library allows for sound to be played continuosly while varying the stream in real time. This can be done by creating a callback function for the PyAudio object. This function gets called at the end of the set duration, and new audio data can be attached to the stream to continue playing sounds without stopping the stream, generating a continuous audio output. 
 
