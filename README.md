@@ -1,5 +1,6 @@
 # cs41_jazzHands
 CS41 Final Project
+
 *Team: Meera Radhakrishnan, Andrea Ramirez*
 
 ## Introduction
@@ -44,7 +45,7 @@ By doing this project, we got a much better understanding of how to navigate the
 ## Setup
 #### Software
 In order to run our code, make sure to install the following libraries:
-* PySerial (pip install serial)
+* PySerial (pip install pyserial)
 * PyAudio (pip install pyaudio)
 * Numpy (pip install numpy)
 * Matplotlib (pip install matplotlib)
@@ -63,7 +64,7 @@ To set up the circuit, create a simple voltage divider between each potentiomete
 Our code's serial communication was tested with an Adafruit Metro Mini at 9600 baud rate. The Metro Mini sent data from 3 sensors (or potentiometers) to our computer through serial. The flex sensors used had a 50k resistance, so its preferable to use 50k potentiometers if not enough flex sensors are available. The relevant Arduino code can be found in pot_test.
 
 ## Running the Code
-First, upload the Arduino sketch to your Metro Mini and connect it to your computer via USB. To run the Python code, first make sure your Metro Mini is outputing serial data at a 9600 baud rate. The data from the 3 sensors should be all transmitted in the same line/buffer, separtaed by spaces. Check which serial port your Metro Mini is connected to (COM ports for Windows  or /dev/tty port for Mac and Linux). Update the serial port definition depending on the port you are using. An example definition is shown below: 
+First, upload the Arduino sketch to your Metro Mini and connect it to your computer via USB. To run the Python code, first make sure your Metro Mini is outputing serial data at a 9600 baud rate. The data from the 3 sensors should be all transmitted in the same line/buffer, separated by spaces. Check which serial port your Metro Mini is connected to (COM ports for Windows  or /dev/tty port for Mac and Linux). Update the serial port definition depending on the port you are using. An example definition is shown below: 
 
     #Serial port definition. Change this line according to the port you are using for serial communication.
     #COM3 is the serial communication port in this example
@@ -74,8 +75,13 @@ Once the serial port is set, run full_audio_test.py and have fun playing with th
 *Optional: Each sensor has a different range of values it can transmit as no two sensors are equal. You can edit the NORMALIZE_SENS list to match your specific sensor for better results.*
 
 ## Possible Modifications for More Fun
-- Can add more pots
-- Can change the base frequency
+There are many possible extensions to build upon this project. Here are some ideas that we came up with:
+
+-> More sensors and/or potentiometers can be added to have more variables available. The Metro Mini has 6 analog inputs, so up to 6 sensors could be read. Using a different microcontroller with more analog inputs would allow for even more sensor inputs. Each of these sensors could be used to add another frequency to the chord, or even be set to vary volume, pitch, or other aspects of the audio.
+
+-> Our code currently generates an A major chord using a 440 Hz base frequnecy. Editing this frequnecy would allow other chords to be produced, so feel free to experiment with it!
+
+-> The current audio stream plays sound for the set duration and then stops the stream. However, the PyAudio library allows for sound to be played continuosly while varying the stream in real time. This can be done by creating a callback function for the PyAudio object. This function gets called at the end of the set duration, and new audio data can be attached to the stream to continue playing sounds without stopping the stream, generating a continuous audio output. 
 
 ## Acknowledgments 
 We want to thank Sam Redmond and the CS41 staff for all their help and support!
