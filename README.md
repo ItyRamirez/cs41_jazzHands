@@ -27,10 +27,16 @@ All sounds can be thought of as a sum of sine waves of different amplitudes and 
 
 First, we need to set up the audio stream. We create a pyaudio object, and set up the volume, sampling rate, and duration of the sound. We then open the audio stream using pyaudio.open().
 
-Next, within our while(True) loop, we need to transform the flex sensor outputs into appropriately weighted sound samples.
+Next, within our while(True) loop, we need to transform the flex sensor outputs into appropriately weighted sound samples. From the processed serial data, on each iteration we have an array of three numbers: the weight of A, the weight of C#, and the weight of E. We first normalize these weights to the maximum expected value from each sensor to get a fraction. Then, for each note, we generate a set of samples representing that note's sine wave, multiply all of the samples by that note's weight, and then add it to the final sample. The result is an array of sound samples containing a sum of all three sine waves appropriately weighted.
+
+To play the sound, we simply call stream.write(samples).
 
 #### Generating and Updating Visualizations
+Having successfully generated sounds weighted by the flex sensor inputs, we decided to develop visualizations of the music using matplotlib. Generating real-time visualizations was particularly challenging and required us to gain more proficiency with the matplotlib library.
 
+Our visualizations consist of a single window with two subplots. The top subplot displays the time domain waveform (i.e. the final sum of sine waves plotted vs. time) and the bottom subplot displays a bar graph that shows the weights of each of the frequencies. Both subplots are updated with every new measurement.
+
+First, we set up the figure that will hold the visualizations before the while(True) loop.
 
 ## Lessons Learned
 - Better understand compatibility and dependencies
