@@ -36,14 +36,13 @@ Having successfully generated sounds weighted by the flex sensor inputs, we deci
 
 Our visualizations consist of a single window with two subplots. The top subplot displays the time domain waveform (i.e. the final sum of sine waves plotted vs. time) and the bottom subplot displays a bar graph that shows the weights of each of the frequencies. Both subplots are updated with every new measurement.
 
-First, we set up the figure that will hold the visualizations before the while(True) loop.
+First, we set up the figure that will hold the visualizations before the while(True) loop. Inside the while(True) loop, we dynamically rescale the x axis of the time domain plot (based on the frequency content of the notes) and update the data for both plots in each iteration. matplotlib.draw() updates the plot visuals.
 
 ## Lessons Learned
 - Better understand compatibility and dependencies
 - Permissions issue to access serial ports through WSL
 - WSL doesn't even support audio
 - More confidence in using Python to interface with hardware, which is exciting for future project possibilities
-
 
 ## Setup
 #### Software
