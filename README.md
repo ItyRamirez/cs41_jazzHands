@@ -39,6 +39,10 @@ Our visualizations consist of a single window with two subplots. The top subplot
 
 First, we set up the figure that will hold the visualizations before the while(True) loop. Inside the while(True) loop, we dynamically rescale the x axis of the time domain plot (based on the frequency content of the notes) and update the data for both plots in each iteration. matplotlib.draw() updates the plot visuals.
 
+Here is an example of the visual output:
+
+![alt text](https://github.com/ItyRamirez/cs41_jazzHands/blob/master/visualizations.PNG)
+
 ## Lessons Learned
 By doing this project, we got a much better understanding of how to navigate the Python ecosystem and anticipate compatibility and dependency issues. We ran into multiple issues, including implementing PySerial and PyAudio effectively on WSL. Including hardware added an additional layer of complexity, but we learned lots of useful concepts that expand the range of exciting possibilities for interfacing with future hardware projects.
 
