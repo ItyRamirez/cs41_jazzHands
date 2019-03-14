@@ -36,6 +36,7 @@ Next, within our while(True) loop, we need to transform the flex sensor outputs 
 - Better understand compatibility and dependencies
 - Permissions issue to access serial ports through WSL
 - WSL doesn't even support audio
+- More confidence in using Python to interface with hardware, which is exciting for future project possibilities
 
 
 ## Setup
