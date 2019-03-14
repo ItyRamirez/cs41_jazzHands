@@ -58,13 +58,12 @@ In order to run our code, make sure to install the following libraries:
 You may also need Xming or a similar program to be able to see the frequency plots.
 
 #### Hardware
-Our code's serial communication was tested with an Adafruit Metro Mini at 9600 baud rate. The Metro Mini sent data from 3 sensors (or potentiometers) to our computer through serial. The flex sensors used had a 50k resistance, so its preferrable to use 50k potentiometers if not enough flex sensors are available. The relevant Arduino code can be found in pot_test.
-TODO probably more instructions on how to build the circuit
+To set up the circuit, create a simple voltage divider between each potentiometer/flex sensor and a known resistor (our Arduino code in pot_test assumes a known resistor of 65kOhm, but any resistor relatively close to 50kOhms will work as long as the relevant R_FIXED value in the Arduino code is updated). Connect the middle node of the voltage divider to one of the Metro Mini's analog input pins. (Between A0 and A5; see Arduino code to see which ones are currently implemented.)
+
+Our code's serial communication was tested with an Adafruit Metro Mini at 9600 baud rate. The Metro Mini sent data from 3 sensors (or potentiometers) to our computer through serial. The flex sensors used had a 50k resistance, so its preferable to use 50k potentiometers if not enough flex sensors are available. The relevant Arduino code can be found in pot_test.
 
 ## Running the Code
-- Upload Arduino code
-
-To run the code, first make sure your Metro Mini is outputing serial data at a 9600 baud rate. The data from the 3 sensors should be all transmitted in the same line/buffer, separtaed by spaces. Check which serial port your Metro Mini is connected to (COM ports for Windows  or /dev/tty port for Mac and Linux). Update the serial port definition depending on the port you are using. An example definition is shown below: 
+First, upload the Arduino sketch to your Metro Mini and connect it to your computer via USB. To run the Python code, first make sure your Metro Mini is outputing serial data at a 9600 baud rate. The data from the 3 sensors should be all transmitted in the same line/buffer, separtaed by spaces. Check which serial port your Metro Mini is connected to (COM ports for Windows  or /dev/tty port for Mac and Linux). Update the serial port definition depending on the port you are using. An example definition is shown below: 
 
     #Serial port definition. Change this line according to the port you are using for serial communication.
     #COM3 is the serial communication port in this example
