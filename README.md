@@ -3,6 +3,8 @@ CS41 Final Project
 
 *Team: Meera Radhakrishnan, Andrea Ramirez*
 
+Go to: https://github.com/ItyRamirez/cs41_jazzHands for pictures
+
 ## Introduction
 Welcome to Jazz Hands! 
 
